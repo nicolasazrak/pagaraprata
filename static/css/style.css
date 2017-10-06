@@ -1,0 +1,49 @@
+.card {
+  margin: 1em;
+}
+
+.deuda {
+  color: red;
+  font-weight: bolder;
+}
+
+.pago {
+  color: green;
+  font-weight: bolder;
+}
+
+.total-resumen {
+  font-weight: bolder;
+  font-size: 1.6em;
+}
+
+.card {
+  padding: 0;
+}
+
+ul {
+  padding: 0em;
+}
+
+li {
+  list-style-type: none;
+}
+
+.payment-description {
+  padding: 0.3em 0.3em;
+}
+
+.cost-detail {
+  padding: 0.3em 0.3em;
+}
+
+
+i.fa {
+  vertical-align: middle;
+  line-height: 100%;
+}
+
+iframe {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}

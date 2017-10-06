@@ -1,0 +1,67 @@
+<html>
+<head>
+  <title>¿Cuanto debo?</title>
+
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+    integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="static/css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.js"></script>
+  <script src="https://unpkg.com/vue"></script>
+
+  <meta property="og:title" content="Pagaraprata" />
+  <meta property="og:description" content="Cuanto le debemos a ivan?" />
+  <meta property="og:image" content="https://i.ytimg.com/vi/xlX6TX93hU0/hqdefault.jpg" />
+</head>
+<body>
+
+  <div class="container" id="app">
+    <div class="card text-center">
+      <div class="card-body">
+        <h4 class="card-title">Total ${{ total() }}</h4>
+        <p class="card-text">
+          <strong>Detalles:</strong>
+          <ul>
+            <li class="cost-detail" v-for="cost in costs">
+              <span class="deuda">${{ cost.value }}</span> x {{ cost.quantity }} ({{ cost.description }})
+              <i v-if="canEdit" v-on:click.prevent="removeCost(cost)" class="fa fa-trash" aria-hidden="true"></i>
+            </li>
+          </ul>
+        </p>
+        <a href="#" v-if="canEdit" v-on:click.prevent="addCost()" class="btn btn-primary">Agregar costo</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm card" v-for="debtor in debtors">
+        <div class="card-body">
+          <h4 class="card-title text-center">{{ debtor.name }}: <span class='deuda'>$ {{ remaining[debtor.name] }} </span></h4>
+          <p class="card-text">
+            <ul>
+              <li v-for="payment in debtor.payments" class="payment-description">
+                <span class="pago">${{ payment.quantity }}</span> ({{ payment.date }})
+                <i v-if="canEdit" v-on:click.prevent="removePaymentFor(debtor.name, payment)" class="fa fa-trash pull-right" aria-hidden="true"></i>
+              </li>
+            </ul>
+            <div v-if="canEdit" class="text-center">
+              <a href="#" v-on:click.prevent="addPaymentFor(debtor.name)" class="btn btn-primary">Agregar pago</a>
+            </div>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <iframe src="https://www.youtube-nocookie.com/embed/4Qpp6gs65rY?rel=0" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+</body>
+<script src="static/js/app.js"></script>
+</html>

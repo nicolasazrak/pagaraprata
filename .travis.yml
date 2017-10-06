@@ -1,0 +1,16 @@
+language: go
+
+cache:
+  apt: true
+  directories:
+    - $GOPATH/pkg
+    - $TRAVIS_BUILD_DIR/vendor
+
+install:
+  - go get github.com/Masterminds/glide
+  - go get -u github.com/jteeuwen/go-bindata/...
+  - glide install
+
+script:
+  - go-bindata ./static/...
+  - go test -v ./...

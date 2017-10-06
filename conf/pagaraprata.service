@@ -1,0 +1,14 @@
+[Unit]
+Description=Pagaraprata
+
+[Service]
+ExecStart=/home/pagaraprata/app/pagaraprata
+WorkingDirectory=/home/pagaraprata/data/
+Environment=DB=prod.db
+Environment=PORT=9005
+PIDFile=/home/pagaraprata/data/pagaraprata.pid
+User=pagaraprata
+Group=pagaraprata
+
+[Install]
+WantedBy=default.target

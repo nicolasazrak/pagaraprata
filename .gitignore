@@ -1,0 +1,7 @@
+vendor
+pagaraprata
+gin-bin
+*.db
+.vscode
+bindata.go
+*.pid
